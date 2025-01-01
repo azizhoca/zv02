@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>kayitli_ogrenciler</class>
+ <widget class="QMainWindow" name="kayitli_ogrenciler">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Kayıtlı Öğrenciler</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../Yazılım/Zv0.1/resources.qrc">
+    <normaloff>:/black/icons/black/Layer 1 copy.png</normaloff>:/black/icons/black/Layer 1 copy.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Global Styles */
+* {
+	font: 10pt &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;;
+    color: #333; /* Koyu gri yazı rengi */
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+/* Etiketler */
+QLabel {
+    color: #333; /* Koyu gri yazı rengi */
+    font-weight: 500; /* Orta kalınlıkta yazı */
+}
+
+/* Butonlar */
+QPushButton {
+    color: #fff; /* Beyaz yazı rengi */
+    background-color: #007bff; /* Modern mavi arka plan */
+    border: none;
+    border-radius: 6px; /* Hafif yuvarlatılmış köşeler */
+    padding: 8px 20px; /* Rahat içerik alanı */
+    margin: 5px;
+    font-weight: 600; /* Kalın yazı */
+    text-align: center;
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Üzerine gelindiğinde koyu mavi */
+}
+
+QPushButton:pressed {
+    background-color: #004080; /* Tıklama anında daha koyu mavi */
+}
+
+/* Araç Butonları */
+QToolButton {
+    color: #333;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 12px; /* Yazı boyutu ayarlandı */
+}
+
+QToolButton:hover {
+    background-color: #e0e0e0; /* Üzerine gelindiğinde hafif gri */
+}
+
+QToolButton:pressed {
+    background-color: #d0d0d0; /* Tıklama anında daha koyu gri */
+}
+
+/* Giriş Alanları */
+QLineEdit, QPlainTextEdit {
+    color: #333;
+    background-color: #fff; /* Beyaz arka plan */
+    border: 1px solid #ccc; /* Açık gri sınır */
+    border-radius: 4px; /* Hafif yuvarlatılmış köşeler */
+    font-size: 14px;
+    padding: 6px;
+}
+
+QLineEdit:focus, QPlainTextEdit:focus {
+    border-color: #007bff; /* Odaklanıldığında mavi sınır */
+}
+
+/* Seçim Kutuları */
+QComboBox {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+QComboBox::drop-down {
+    border-left: 1px solid #ccc; /* Düğme ile kutuyu ayır */
+}
+
+/* Menüler ve Menü Çubuğu */
+QMenuBar {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0 10px;
+}
+
+QMenuBar::item {
+    padding: 10px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected {
+    background-color: #0056b3;
+}
+
+QMenu {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+QMenu::item:selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #ccc;
+    margin: 5px 0;
+}
+
+/* Checkbox ve Radio Butonlar */
+QCheckBox, QRadioButton {
+    color: #333;
+}
+
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+QCheckBox::indicator:checked, QRadioButton::indicator:checked {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+/* Tablolar */
+QTableWidget {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+QTableWidget::item:selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+QHeaderView::section {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Kaydırıcılar */
+QScrollBar:vertical, QScrollBar:horizontal {
+    background-color: #f5f5f5;
+    border: none;
+    width: 12px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background-color: #ccc;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* GroupBox */
+QGroupBox {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+QGroupBox::title {
+    subcontrol-origin: padding;
+    subcontrol-position: top left;
+    padding: 0 10px;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame_3">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QFrame" name="frame_10">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="btn_kayitli_ogrenciler_listeyi_yenile">
+            <property name="text">
+             <string>Listeyi Yenile</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../Yazılım/Zv0.1/resources.qrc">
+              <normaloff>:/black/icons/black/repeat.svg</normaloff>:/black/icons/black/repeat.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_kayitli_ogrenciler_yeni_ogrenci_ekle">
+            <property name="text">
+             <string>Yeni Öğrenci Ekle</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../Yazılım/Zv0.1/resources.qrc">
+              <normaloff>:/others/icons/others/student-svgrepo-com.svg</normaloff>:/others/icons/others/student-svgrepo-com.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_kayitli_ogrenciler_ogrenci_bilgi_duzenle">
+            <property name="text">
+             <string>Öğrenci Bilgi Düzenle</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../Yazılım/Zv0.1/resources.qrc">
+              <normaloff>:/others/icons/others/e-learning-svgrepo-com.svg</normaloff>:/others/icons/others/e-learning-svgrepo-com.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btn_kayitli_ogrenciler_muhasebe_islemleri">
+            <property name="text">
+             <string>Muhasebe İşlemleri</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../Yazılım/Zv0.1/resources.qrc">
+              <normaloff>:/others/icons/others/point-of-sale-pay-svgrepo-com.svg</normaloff>:/others/icons/others/point-of-sale-pay-svgrepo-com.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Kayıtlı Öğrenciler:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_8">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="frame_9">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Sırala:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="rb_kayitli_ogrenciler_no_sirali">
+               <property name="text">
+                <string>No Sıralı</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="rb_kayitli_ogrenciler_isim_sirali">
+               <property name="text">
+                <string>İsim Sıralı</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_11">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QTableWidget" name="tableWidget_kayitli_ogrenciler_listesi"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QFrame" name="frame_5">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QLabel" name="lbl_kayitli_ogrenciler_isimlik">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_6">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_7">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QTabWidget" name="tabWidget">
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <widget class="QWidget" name="tab_3">
+                <attribute name="title">
+                 <string>Tab 1</string>
+                </attribute>
+               </widget>
+               <widget class="QWidget" name="tab_4">
+                <attribute name="title">
+                 <string>Tab 2</string>
+                </attribute>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../Yazılım/Zv0.1/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
